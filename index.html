@@ -538,7 +538,7 @@ Here's to this month, and to all the months and milestones waiting ahead of us.<
     defaultStart.setMonth(defaultStart.getMonth() - 7);
     // Format YYYY-MM-DDTHH:MM for datetime-local input
     const pad = (n) => String(n).padStart(2, '0');
-    const formattedDefaultDate = `${defaultStart.getFullYear()}-${pad(defaultStart.getMonth() + 1)}-${pad(defaultStart.getDate())}T${pad(defaultStart.getHours())}:${pad(defaultStart.getMinutes())}`;
+    const formattedDefaultDate = `${defaultStart.getFullYear()}-${pad(defaultStart.getMonth() + 1)}-${pad(defaultStart.getDate())}T${pad(0)}:${pad(0)}`;
 
     const state = {
       startDate: formattedDefaultDate,
