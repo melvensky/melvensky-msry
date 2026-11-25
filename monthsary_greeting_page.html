@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Monthsary ❤️</title>
+  <!-- Load Google Fonts: Playfair Display & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe3e8 100%);
+      --primary: #e63946;
+      --primary-hover: #d62828;
+      --primary-light: #ff758f;
+      --badge-bg: #ffccd5;
+      --text-dark: #2b2d42;
+      --text-muted: #6c757d;
+      --card-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-dark);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Floating Hearts Background */
+    .hearts-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      color: var(--primary-light);
+      opacity: 0.4;
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main Layout Container */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 6rem;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    /* Hero Section */
+    .badge {
+      display: inline-block;
+      background: var(--badge-bg);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.45rem 1.15rem;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(230, 57, 70, 0.08);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Live Counter Card */
+    .counter-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(230, 57, 70, 0.1);
+      margin-bottom: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    .counter-title {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .time-box {
+      background: #ffffff;
+      padding: 1rem 0.5rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .time-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .time-box span {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+
+    .time-box small {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* Interactive Love Letter */
+    .letter-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .open-letter-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.2rem;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .open-letter-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(230, 57, 70, 0.35);
+    }
+
+    .open-letter-btn:active {
+      transform: translateY(0);
+    }
+
+    .letter-content {
+      display: none;
+      background: #ffffff;
+      text-align: left;
+      padding: 2.5rem;
+      border-radius: 20px;
+      margin-top: 1.5rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      line-height: 1.8;
+      animation: fadeIn 0.5s ease forwards;
+      border-top: 5px solid var(--primary);
+    }
+
+    .letter-content.show {
+      display: block;
+    }
+
+    .letter-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .letter-body {
+      color: #4a4e69;
+      white-space: pre-line;
+      font-size: 0.98rem;
+    }
+
+    .signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-top: 1.5rem;
+      text-align: right;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Milestones / Highlights Grid */
+    .memories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      text-align: left;
+    }
+
+    .memory-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(230, 57, 70, 0.08);
+    }
+
+    .memory-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .memory-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .memory-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Subtle Floating Customize Toggle & Drawer */
+    .customize-fab {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      color: var(--text-dark);
+      border: 1px solid rgba(230, 57, 70, 0.2);
+      padding: 0.65rem 1.1rem;
+      border-radius: 50px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .customize-fab:hover {
+      background: #ffffff;
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .customize-panel {
+      position: fixed;
+      bottom: 4.5rem;
+      right: 1.25rem;
+      width: 330px;
+      max-width: calc(100vw - 2.5rem);
+      max-height: 75vh;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 1.25rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(230, 57, 70, 0.15);
+      z-index: 50;
+      text-align: left;
+      display: none;
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    .customize-panel.open {
+      display: block;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #f1f3f5;
+    }
+
+    .panel-header h4 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .close-panel {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 0.85rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid #dee2e6;
+      border-radius: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-dark);
+      background: #fff;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.45;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 680px) {
+      .memories-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 2.15rem;
+      }
+      .timer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .letter-content {
+        padding: 1.5rem;
+      }
+      .container {
+        padding-top: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Hearts Container -->
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Header -->
+    <div class="badge" id="monthsaryBadge">Happy 5th Monthsary ❤️</div>
+    <h1 id="headline">Happy Monthsary, My Love</h1>
+    <p class="subtitle" id="subtitleText">Every day with you feels like my favorite chapter.</p>
+
+    <!-- Live Time Together Counter -->
+    <section class="counter-card" aria-label="Time together counter">
+      <div class="counter-title">Loving you for</div>
+      <div class="timer-grid">
+        <div class="time-box">
+          <span id="days">0</span>
+          <small>Days</small>
+        </div>
+        <div class="time-box">
+          <span id="hours">0</span>
+          <small>Hours</small>
+        </div>
+        <div class="time-box">
+          <span id="minutes">0</span>
+          <small>Minutes</small>
+        </div>
+        <div class="time-box">
+          <span id="seconds">0</span>
+          <small>Seconds</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Love Letter -->
+    <section class="letter-section">
+      <button class="open-letter-btn" id="toggleLetterBtn">💌 Read My Letter For You</button>
+      <div class="letter-content" id="letterBox">
+        <h3 id="letterGreeting">My Love,</h3>
+        <div class="letter-body" id="letterBody">Happy monthsary! Looking back at how far we've come, I'm still amazed at how effortlessly you make my days brighter. Whether we're talking for hours, laughing over the smallest things, or simply sharing quiet moments together, being with you feels like home.
+
+Thank you for your patience, your kindness, and for always showing up for us—even across the distance and busy days. You inspire me to be better every single day.
+
+Here's to this month, and to all the months and milestones waiting ahead of us.</div>
+        <div class="signature">
+          Forever yours,<br />
+          <span id="signatureName">Your Love</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlight Memory Cards -->
+    <section class="memories-grid" aria-label="Relationship highlights">
+      <article class="memory-card">
+        <div class="memory-icon">✨</div>
+        <h4>Our Late-Night Talks</h4>
+        <p>No matter how tired I am, hearing from you instantly resets my whole day.</p>
+      </article>
+      <article class="memory-card">
+        <div class="memory-icon">🌙</div>
+        <h4>Through Every Mile</h4>
+        <p>Distance is just a temporary detail compared to how close you are to my heart.</p>
+      </article>
+      <article class="memory-card">
+        <div class="memory-icon">🤍</div>
+        <h4>The Little Moments</h4>
+        <p>Your laugh, your random updates, and the way you care mean everything to me.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Floating Customize Toggle & Live Preview Panel -->
+  <button class="customize-fab" id="customizeToggle" aria-label="Customize greeting">
+    ✏️ Customize
+  </button>
+
+  <aside class="customize-panel" id="customizePanel" aria-label="Live customization controls">
+    <div class="panel-header">
+      <h4>✨ Live Preview Editor</h4>
+      <button class="close-panel" id="closePanelBtn" aria-label="Close editor">&times;</button>
+    </div>
+
+    <div class="form-group">
+      <label for="inputBadge">Monthsary Badge</label>
+      <input type="text" id="inputBadge" value="Happy 5th Monthsary ❤️" />
+    </div>
+
+    <div class="form-group">
+      <label for="inputHeadline">Main Headline</label>
+      <input type="text" id="inputHeadline" value="Happy Monthsary, My Love" />
+    </div>
+
+    <div class="form-group">
+      <label for="inputStartDate">Start Date & Time</label>
+      <input type="datetime-local" id="inputStartDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="inputGreeting">Letter Greeting</label>
+      <input type="text" id="inputGreeting" value="My Love," />
+    </div>
+
+    <div class="form-group">
+      <label for="inputLetter">Letter Message</label>
+      <textarea id="inputLetter"></textarea>
+    </div>
+
+    <div class="form-group" style="margin-bottom: 0;">
+      <label for="inputSignature">Your Name (Signature)</label>
+      <input type="text" id="inputSignature" value="Your Love" />
+    </div>
+  </aside>
+
+  <script>
+    // Default configuration (defaults to 5 months ago from current date for a realistic live counter)
+    const defaultStart = new Date();
+    defaultStart.setMonth(defaultStart.getMonth() - 5);
+    // Format YYYY-MM-DDTHH:MM for datetime-local input
+    const pad = (n) => String(n).padStart(2, '0');
+    const formattedDefaultDate = `${defaultStart.getFullYear()}-${pad(defaultStart.getMonth() + 1)}-${pad(defaultStart.getDate())}T${pad(defaultStart.getHours())}:${pad(defaultStart.getMinutes())}`;
+
+    const state = {
+      startDate: formattedDefaultDate,
+      badgeText: "Happy 5th Monthsary ❤️",
+      headlineText: "Happy Monthsary, My Love",
+      greetingText: "My Love,",
+      letterText: `Happy monthsary! Looking back at how far we've come, I'm still amazed at how effortlessly you make my days brighter. Whether we're talking for hours, laughing over the smallest things, or simply sharing quiet moments together, being with you feels like home.\n\nThank you for your patience, your kindness, and for always showing up for us—even across the distance and busy days. You inspire me to be better every single day.\n\nHere's to this month, and to all the months and milestones waiting ahead of us.`,
+      signatureName: "Your Love"
+    };
+
+    // DOM Elements
+    const elBadge = document.getElementById("monthsaryBadge");
+    const elHeadline = document.getElementById("headline");
+    const elGreeting = document.getElementById("letterGreeting");
+    const elLetterBody = document.getElementById("letterBody");
+    const elSignature = document.getElementById("signatureName");
+
+    const inputBadge = document.getElementById("inputBadge");
+    const inputHeadline = document.getElementById("inputHeadline");
+    const inputStartDate = document.getElementById("inputStartDate");
+    const inputGreeting = document.getElementById("inputGreeting");
+    const inputLetter = document.getElementById("inputLetter");
+    const inputSignature = document.getElementById("inputSignature");
+
+    // Initialize inputs with default state
+    inputBadge.value = state.badgeText;
+    inputHeadline.value = state.headlineText;
+    inputStartDate.value = state.startDate;
+    inputGreeting.value = state.greetingText;
+    inputLetter.value = state.letterText;
+    inputSignature.value = state.signatureName;
+
+    // Live Counter Logic
+    function updateCounter() {
+      const start = new Date(state.startDate).getTime();
+      if (isNaN(start)) return;
+
+      const now = Date.now();
+      const diff = Math.max(0, now - start);
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = pad(hours);
+      document.getElementById("minutes").textContent = pad(minutes);
+      document.getElementById("seconds").textContent = pad(seconds);
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // Letter Toggle Logic
+    const toggleBtn = document.getElementById("toggleLetterBtn");
+    const letterBox = document.getElementById("letterBox");
+
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = letterBox.classList.toggle("show");
+      toggleBtn.textContent = isOpen ? "💖 Close Letter" : "💌 Read My Letter For You";
+    });
+
+    // Customize Panel Toggle Logic
+    const customizeToggle = document.getElementById("customizeToggle");
+    const customizePanel = document.getElementById("customizePanel");
+    const closePanelBtn = document.getElementById("closePanelBtn");
+
+    customizeToggle.addEventListener("click", () => {
+      customizePanel.classList.toggle("open");
+    });
+
+    closePanelBtn.addEventListener("click", () => {
+      customizePanel.classList.remove("open");
+    });
+
+    // Live Input Bindings
+    inputBadge.addEventListener("input", (e) => {
+      state.badgeText = e.target.value;
+      elBadge.textContent = state.badgeText || "Happy Monthsary";
+    });
+
+    inputHeadline.addEventListener("input", (e) => {
+      state.headlineText = e.target.value;
+      elHeadline.textContent = state.headlineText || "Happy Monthsary";
+    });
+
+    inputStartDate.addEventListener("change", (e) => {
+      if (e.target.value) {
+        state.startDate = e.target.value;
+        updateCounter();
+      }
+    });
+
+    inputGreeting.addEventListener("input", (e) => {
+      state.greetingText = e.target.value;
+      elGreeting.textContent = state.greetingText;
+    });
+
+    inputLetter.addEventListener("input", (e) => {
+      state.letterText = e.target.value;
+      elLetterBody.textContent = state.letterText;
+      // Automatically open letter if user starts editing it while closed
+      if (!letterBox.classList.contains("show")) {
+        letterBox.classList.add("show");
+        toggleBtn.textContent = "💖 Close Letter";
+      }
+    });
+
+    inputSignature.addEventListener("input", (e) => {
+      state.signatureName = e.target.value;
+      elSignature.textContent = state.signatureName;
+    });
+
+    // Generate Floating Hearts Background
+    const heartsBg = document.getElementById("heartsBg");
+    const heartSymbols = ["❤️", "💖", "💕", "🤍"];
+
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 16 + 12) + "px";
+      heart.style.animationDuration = (Math.random() * 8 + 7) + "s";
+      heart.style.animationDelay = (Math.random() * 5) + "s";
+      heartsBg.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
